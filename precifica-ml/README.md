@@ -69,7 +69,7 @@ Os tipos são atualizados pelo nome (os que não existem são criados). O impost
 
 Abrindo as páginas por outro servidor local (ex.: Live Server do VS Code na porta 5500), o frontend já usa a API em `http://localhost:3000/api` — basta deixar o backend rodando.
 
-Se for hospedar o frontend em outro servidor, edite `frontend/assets/js/config.js` com a URL da API, ajuste `CORS_ORIGIN` no `.env` e use `SERVE_FRONTEND=false`.
+A API publicada fica em https://sistema-calculo-ml.onrender.com (frontend na raiz, API em `/api`). Um frontend hospedado em outro endereço usa essa API automaticamente; para trocar, edite `API_PUBLICADA` em `frontend/assets/js/config.js` e ajuste `CORS_ORIGIN` no `.env` do servidor.
 
 ## Endpoints da API
 
