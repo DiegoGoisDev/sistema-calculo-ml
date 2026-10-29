@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora · Precifica ML</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/config.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar"></aside>
+  <main>
+    <section class="view">
+      <div>
+        <h1>Quanto cobrar no Mercado Livre</h1>
+        <p class="lede">Escolha o tipo de produto, informe compra e frete e veja o preço de venda com tarifas, impostos e o lucro que você quer.</p>
+      </div>
+
+      <div class="grid2">
+        <form class="panel" id="formCalc" autocomplete="off">
+          <div class="fields">
+            <div class="f full"><label for="nome">Nome do produto</label><input id="nome" placeholder="Ex.: Fone Bluetooth X10"></div>
+            <div class="f full"><label for="tipoId">Tipo de produto</label><select id="tipoId"></select></div>
+            <div class="f"><span class="lbl">Origem</span>
+              <div class="seg" id="origem"><button type="button" data-v="nacional">Nacional</button><button type="button" data-v="internacional">Internacional</button></div></div>
+            <div class="f"><span class="lbl">Tipo de anúncio</span>
+              <div class="seg" id="anuncio"><button type="button" data-v="classico">Clássico</button><button type="button" data-v="premium">Premium</button></div></div>
+            <div class="f"><label for="valorCompra">Valor de compra</label><div class="money"><span>R$</span><input id="valorCompra" inputmode="decimal" value="45"></div></div>
+            <div class="f"><label for="freteCompra">Frete da compra</label><div class="money"><span>R$</span><input id="freteCompra" inputmode="decimal" value="5"></div></div>
+            <div class="f full"><span class="lbl">Lucro sobre cada venda</span>
+              <div class="chips" id="lucros"></div>
+              <div class="row"><div class="pct" style="max-width:130px"><input id="lucro" inputmode="decimal" value="20" aria-label="Lucro personalizado"><span>%</span></div><span class="hint">ou digite outro valor</span></div>
+            </div>
+            <div class="f"><span class="lbl">Envio</span>
+              <div class="seg" id="logistica"><button type="button" data-v="mercado_envios">Mercado Envios</button><button type="button" data-v="flex">Flex / próprio</button></div></div>
+            <div class="f"><label for="freteEnvio">Frete de envio ao cliente</label><div class="money"><span>R$</span><input id="freteEnvio" inputmode="decimal" placeholder="0,00"></div></div>
+            <p class="f full hint" style="margin:0">Frete de envio: use o valor do Simulador de Custos do ML para o peso do pacote. Deixe 0 se o comprador paga.</p>
+          </div>
+        </form>
+
+        <div class="stack">
+          <div class="result">
+            <span class="lbl">Preço de venda sugerido</span>
+            <div class="price" id="preco"><small>R$</small>—</div>
+            <div class="result-row">
+              <div>Lucro por venda<b id="lucroR">—</b></div>
+              <div>Margem real<b id="margem">—</b></div>
+              <div>Custo do produto<b id="custo">—</b></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Para onde vai cada venda</h2><span class="hint" id="cenarioInfo"></span></div>
+            <div class="bar" id="barra"></div>
+            <div class="legend" id="legenda"></div>
+          </div>
+          <div id="alertas" class="stack" style="gap:8px"></div>
+          <div class="row">
+            <button class="btn primary" id="btnSalvar" type="button">Salvar em Meus produtos</button>
+            <span class="hint" id="modoEdicao"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Compare por % de lucro</h2><span class="hint">Linha destacada = lucro escolhido. Premium tem 12x sem juros e tarifa maior.</span></div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Lucro</th><th class="n">Preço Clássico</th><th class="n">Lucro R$</th><th class="n">Preço Premium</th><th class="n">Lucro R$</th></tr></thead>
+          <tbody id="comparacao"></tbody>
+        </table></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="assets/js/pages/calculadora.js"></script>
+</body>
+</html>

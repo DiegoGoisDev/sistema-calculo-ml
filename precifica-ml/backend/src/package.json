@@ -1,0 +1,21 @@
+{
+  "name": "precifica-ml-api",
+  "version": "1.0.0",
+  "description": "API de precificação de produtos para o Mercado Livre, com cenários de impostos da reforma tributária",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "importar-planilha": "node scripts/importarPlanilha.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2"
+  }
+}

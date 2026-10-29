@@ -1,0 +1,421 @@
+{
+  "versao": 1,
+  "tipos": [
+    {
+      "id": "f0d19204-c980-49ca-b65c-da688f75482c",
+      "nome": "Acessórios para Veículos",
+      "tarifaClassico": 0.12,
+      "tarifaPremium": 0.17,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "db4b90a2-53bb-4805-81d8-a942c025df2b",
+      "nome": "Agro",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "d78283f2-b3f2-404c-a7ee-4dc47a69908b",
+      "nome": "Alimentos e Bebidas",
+      "tarifaClassico": 0.14,
+      "tarifaPremium": 0.19,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "5e1087a5-1164-4233-a0c9-fa1e068da50a",
+      "nome": "Antiguidades e Coleções",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "35c7ea73-2cf6-4356-9e46-a674fe9f1a0e",
+      "nome": "Arte, Papelaria e Armarinho",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "f5eb9790-74cb-40c2-911a-2c1f58ae204c",
+      "nome": "Bebês",
+      "tarifaClassico": 0.14,
+      "tarifaPremium": 0.19,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "3505300b-e415-4867-92bd-c35c23149984",
+      "nome": "Beleza e Cuidado Pessoal",
+      "tarifaClassico": 0.14,
+      "tarifaPremium": 0.19,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "d7ce3f1b-c33f-4bb1-9d75-bee3a4872d91",
+      "nome": "Brinquedos e Hobbies",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "7a52d53d-9445-4601-b084-4559dc66cdc9",
+      "nome": "Calçados, Roupas e Bolsas",
+      "tarifaClassico": 0.14,
+      "tarifaPremium": 0.19,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "7fb49771-8d64-4f3c-bad2-821fe29f8bee",
+      "nome": "Câmeras e Acessórios",
+      "tarifaClassico": 0.11,
+      "tarifaPremium": 0.16,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "b160b968-961c-49bd-bb7f-0e2096b18b16",
+      "nome": "Casa, Móveis e Decoração",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "7112ac82-2c69-4f44-83dc-e1015ae6f78c",
+      "nome": "Celulares e Telefones",
+      "tarifaClassico": 0.11,
+      "tarifaPremium": 0.16,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "a2bde882-8070-4173-a24d-4a972baee278",
+      "nome": "Construção",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "738fb1e7-64a6-43cb-a112-485dd893b335",
+      "nome": "Eletrodomésticos",
+      "tarifaClassico": 0.11,
+      "tarifaPremium": 0.16,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "89a910f3-8cd1-4ef5-86f3-150c219a44ee",
+      "nome": "Eletrônicos, Áudio e Vídeo",
+      "tarifaClassico": 0.13,
+      "tarifaPremium": 0.18,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "efbb4190-9e26-4806-abf0-1367261f4aff",
+      "nome": "Esportes e Fitness",
+      "tarifaClassico": 0.14,
+      "tarifaPremium": 0.19,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "3416f8e1-814e-41e6-9c9b-aee918b6c0a6",
+      "nome": "Festas e Lembrancinhas",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "056afa1b-14fe-453a-83b3-cc575b032164",
+      "nome": "Games",
+      "tarifaClassico": 0.13,
+      "tarifaPremium": 0.18,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "d150f558-78ca-43f5-8df7-e2e9dceb9b50",
+      "nome": "Indústria e Comércio",
+      "tarifaClassico": 0.12,
+      "tarifaPremium": 0.17,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "53f8a7f0-0126-4edd-ab19-a46d82b52836",
+      "nome": "Informática",
+      "tarifaClassico": 0.11,
+      "tarifaPremium": 0.16,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "9801c94e-191e-4bdf-80be-db218d4e7db3",
+      "nome": "Instrumentos Musicais",
+      "tarifaClassico": 0.115,
+      "tarifaPremium": 0.165,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "184b56a7-8b58-4a54-a5b4-14693008e5a0",
+      "nome": "Joias e Relógios",
+      "tarifaClassico": 0.125,
+      "tarifaPremium": 0.175,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "024cdd00-44cd-47a3-89b1-89294e9674e1",
+      "nome": "Livros, Revistas e Comics",
+      "tarifaClassico": 0.12,
+      "tarifaPremium": 0.17,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "7a3f3d39-b019-4c06-9aea-cc1dd3d69c39",
+      "nome": "Música, Filmes e Seriados",
+      "tarifaClassico": 0.12,
+      "tarifaPremium": 0.17,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "447d3d4c-c3bd-42d0-b74f-cd68494a2219",
+      "nome": "Pet Shop",
+      "tarifaClassico": 0.125,
+      "tarifaPremium": 0.175,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    },
+    {
+      "id": "ef6dcc4e-066d-47d5-a845-4d17f0ef79cf",
+      "nome": "Saúde",
+      "tarifaClassico": 0.12,
+      "tarifaPremium": 0.17,
+      "reducaoReforma": 0,
+      "impostoImportacao": 0.3,
+      "icmsImportacao": 0.2,
+      "embalagem": 2,
+      "impostoVenda": null
+    }
+  ],
+  "cenarios": [
+    {
+      "id": "c25ad467-ccd0-4ae2-ab90-6f20b4a52a68",
+      "nome": "Simples Nacional",
+      "observacao": "Alíquota efetiva do DAS — ajuste à sua faixa",
+      "tributos": [
+        {
+          "id": "bd5be672-17fc-452a-ac90-80ff948e0f8f",
+          "nome": "DAS (alíquota efetiva)",
+          "aliquota": 0.06,
+          "reforma": false,
+          "ativo": true
+        }
+      ]
+    },
+    {
+      "id": "db941dea-0274-4ab6-926b-a66184863d24",
+      "nome": "Regime regular 2026",
+      "observacao": "Lucro Presumido; CBS/IBS de teste são compensáveis",
+      "tributos": [
+        {
+          "id": "6f157cac-bceb-4b3c-8f29-2d5b6b9f70d3",
+          "nome": "PIS/Cofins",
+          "aliquota": 0.0365,
+          "reforma": false,
+          "ativo": true
+        },
+        {
+          "id": "1f55b298-9f13-4aa9-b04c-74ed2ef22d45",
+          "nome": "ICMS",
+          "aliquota": 0.18,
+          "reforma": false,
+          "ativo": true
+        },
+        {
+          "id": "8a4feb7b-505d-4759-9536-782adc1ed9b5",
+          "nome": "CBS (teste)",
+          "aliquota": 0.009,
+          "reforma": true,
+          "ativo": false
+        },
+        {
+          "id": "54507d7b-4d3a-4cb0-b922-ccbf3927baf5",
+          "nome": "IBS (teste)",
+          "aliquota": 0.001,
+          "reforma": true,
+          "ativo": false
+        }
+      ]
+    },
+    {
+      "id": "b5c541bb-1a43-431a-987f-e22b43ad6495",
+      "nome": "Reforma 2027 (estimativa)",
+      "observacao": "CBS cheia estimada; PIS/Cofins extintos",
+      "tributos": [
+        {
+          "id": "ec0b00d8-77fb-4501-af9e-6c233d639011",
+          "nome": "CBS",
+          "aliquota": 0.088,
+          "reforma": true,
+          "ativo": true
+        },
+        {
+          "id": "2d3df91d-0137-421f-b219-afcde42c6dfe",
+          "nome": "IBS (teste)",
+          "aliquota": 0.001,
+          "reforma": true,
+          "ativo": false
+        },
+        {
+          "id": "62ca33a8-dccc-4e94-8103-8b0088e2b36a",
+          "nome": "ICMS",
+          "aliquota": 0.18,
+          "reforma": false,
+          "ativo": true
+        }
+      ]
+    },
+    {
+      "id": "a910b252-6777-43fb-beaa-c3d4f6959c01",
+      "nome": "Reforma 2033 (estimativa)",
+      "observacao": "Só CBS + IBS; total de referência ≈ 26,5%",
+      "tributos": [
+        {
+          "id": "eade3a7f-36d9-443b-8c0a-ad714b1c7421",
+          "nome": "CBS",
+          "aliquota": 0.088,
+          "reforma": true,
+          "ativo": true
+        },
+        {
+          "id": "83dd05bd-6ef0-4190-89af-dccd23c071a2",
+          "nome": "IBS",
+          "aliquota": 0.177,
+          "reforma": true,
+          "ativo": true
+        }
+      ]
+    }
+  ],
+  "cenarioAtivoId": "c25ad467-ccd0-4ae2-ab90-6f20b4a52a68",
+  "config": {
+    "mercadoAds": 0,
+    "devolucoes": 0.02,
+    "opcoesLucro": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.5,
+      0.6
+    ]
+  },
+  "produtos": [],
+  "historico": [
+    {
+      "id": "a783c08e-23e5-4730-b4f8-1e15cedd8639",
+      "data": "2026-10-29T19:34:01.010Z",
+      "descricao": "Base importada da planilha: 26 tipo(s) atualizado(s), 0 criado(s); Ads, devoluções e opções de lucro atualizados."
+    },
+    {
+      "id": "18baf4e9-0856-431a-8983-17f631cbb27d",
+      "data": "2026-10-29T19:24:12.729Z",
+      "descricao": "Sistema criado com valores de referência (out/2026)."
+    }
+  ]
+}

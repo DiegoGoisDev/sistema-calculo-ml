@@ -1,0 +1,8 @@
+{
+  // O Live Server recarrega a página quando um arquivo muda; sem isto, cada gravação em backend/data/db.json recarregaria a tela.
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/node_modules/**",
+    "backend/**"
+  ]
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tipos de produto · Precifica ML</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/config.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar"></aside>
+  <main>
+    <section class="view">
+      <div class="row between">
+        <div>
+          <h1>Tipos de produto</h1>
+          <p class="lede">A calculadora puxa estes valores pelo tipo escolhido. Edite uma célula e saia dela para salvar.</p>
+        </div>
+        <button class="btn primary" id="btnNovo" type="button">Adicionar tipo</button>
+      </div>
+
+      <div class="panel flush">
+        <div class="tablewrap"><table>
+          <thead><tr>
+            <th>Tipo de produto</th><th class="n">Tarifa Clássico %</th><th class="n">Tarifa Premium %</th>
+            <th class="n">Imposto venda %</th><th class="n">Redução reforma %</th><th class="n">Imp. importação %</th><th class="n">ICMS import. %</th>
+            <th class="n">Embalagem R$</th><th class="n">Imposto efetivo</th><th></th>
+          </tr></thead>
+          <tbody id="lista"><tr><td colspan="10" class="empty">Carregando…</td></tr></tbody>
+        </table></div>
+      </div>
+
+      <p class="hint">Tarifas: médias de categoria conferidas em 13/10/2026; confira a da sua subcategoria no Simulador de Custos do ML.
+        Imposto venda: alíquota que seu contador indicar para este tipo; deixe vazio para usar o cenário de impostos ativo.
+        Redução reforma: desconto sobre CBS/IBS para bens com alíquota reduzida (ex.: 60% para alguns alimentos e itens de saúde, LC 214/2025). Confirme com seu contador.
+        Imposto efetivo: total do cenário ativo aplicado a este tipo.</p>
+    </section>
+  </main>
+</div>
+<script type="module" src="../assets/js/pages/tipos.js"></script>
+</body>
+</html>

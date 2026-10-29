@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impostos · Precifica ML</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/config.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar"></aside>
+  <main>
+    <section class="view">
+      <div>
+        <h1>Impostos e reforma tributária</h1>
+        <p class="lede">Monte um cenário por regime ou por ano da reforma e ative o que vale hoje. Ao trocar de cenário, todos os preços são recalculados.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Cenários</h2><button class="btn sm" id="btnNovoCenario" type="button">Novo cenário</button></div>
+        <div class="scen-grid" id="cenarios"></div>
+      </div>
+
+      <div class="grid2">
+        <form class="panel" id="formCenario" autocomplete="off">
+          <div class="panel-head">
+            <h2 id="tituloEditor">Editar cenário</h2>
+            <div class="row">
+              <button class="btn sm" id="btnDuplicar" type="button">Duplicar</button>
+              <button class="btn sm primary" id="btnAtivar" type="button">Ativar este cenário</button>
+            </div>
+          </div>
+          <div class="fields" style="margin-bottom:14px">
+            <div class="f"><label for="cNome">Nome</label><input id="cNome"></div>
+            <div class="f"><label for="cObs">Observação</label><input id="cObs"></div>
+          </div>
+          <span class="lbl">Tributos sobre a venda</span>
+          <div id="tributos" style="margin-top:6px"></div>
+          <div class="row between" style="margin-top:12px">
+            <button class="btn sm" id="btnNovoTributo" type="button">Adicionar tributo</button>
+            <div class="row">
+              <button class="btn ghost sm" id="btnExcluir" type="button">Excluir cenário</button>
+              <button class="btn primary" id="btnSalvarCenario" type="submit">Salvar cenário</button>
+            </div>
+          </div>
+          <p class="hint" style="margin:10px 0 0">Marque CBS/IBS nos tributos da reforma: neles vale a redução definida em cada tipo de produto.</p>
+        </form>
+
+        <div class="stack" style="gap:20px">
+          <form class="panel" id="formConfig" autocomplete="off">
+            <h2 style="margin-bottom:10px">Outros custos sobre o preço</h2>
+            <div class="fields">
+              <div class="f"><label for="ads">Mercado Ads (ACOS)</label><div class="pct"><input id="ads" inputmode="decimal"><span>%</span></div></div>
+              <div class="f"><label for="dev">Devoluções / perdas</label><div class="pct"><input id="dev" inputmode="decimal"><span>%</span></div></div>
+              <div class="f full"><label for="lucros">Opções de lucro (separe por ponto e vírgula)</label><input id="lucros"></div>
+            </div>
+            <div class="row" style="margin-top:12px"><button class="btn sm primary" type="submit">Salvar</button></div>
+          </form>
+          <div class="panel">
+            <h2 style="margin-bottom:10px">Calendário da reforma</h2>
+            <div class="timeline">
+              <div><b>2026</b>CBS 0,9% e IBS 0,1% em teste</div>
+              <div><b>2027</b>CBS cheia; PIS/Cofins extintos</div>
+              <div><b>2029–32</b>ICMS cai 10% ao ano; IBS sobe</div>
+              <div><b>2033</b>Só CBS + IBS</div>
+            </div>
+            <p class="hint" style="margin:10px 0 0">Alíquotas de 2027 em diante são estimativas até a resolução do Senado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 style="margin-bottom:6px">Histórico de alterações</h2>
+        <div class="hist" id="historico"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="../assets/js/pages/impostos.js"></script>
+</body>
+</html>

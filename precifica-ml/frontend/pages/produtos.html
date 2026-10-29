@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus produtos · Precifica ML</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/config.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar"></aside>
+  <main>
+    <section class="view">
+      <div class="row between">
+        <div>
+          <h1>Meus produtos</h1>
+          <p class="lede">Preços recalculados com o cenário de impostos ativo. A coluna Variação mostra a diferença para o preço salvo.</p>
+        </div>
+        <div class="row">
+          <button class="btn" id="btnAtualizar" type="button">Gravar preços atuais</button>
+          <a class="btn" id="btnExportar" href="#">Exportar CSV</a>
+          <a class="btn primary" href="../index.html">Novo produto</a>
+        </div>
+      </div>
+
+      <div class="row"><input id="busca" placeholder="Buscar produto pelo nome" style="max-width:340px" aria-label="Buscar produto"></div>
+
+      <div class="panel flush">
+        <div class="tablewrap"><table>
+          <thead><tr><th>Produto</th><th>Tipo</th><th>Origem</th><th class="n">Custo</th><th class="n">Lucro</th><th class="n">Preço salvo</th><th class="n">Preço atual</th><th class="n">Variação</th><th class="n">Lucro R$</th><th></th></tr></thead>
+          <tbody id="lista"><tr><td colspan="10" class="empty">Carregando…</td></tr></tbody>
+        </table></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="../assets/js/pages/produtos.js"></script>
+</body>
+</html>
