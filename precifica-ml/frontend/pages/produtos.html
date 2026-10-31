@@ -24,14 +24,28 @@
         </div>
       </div>
 
-      <div class="row"><input id="busca" placeholder="Buscar produto pelo nome" style="max-width:340px" aria-label="Buscar produto"></div>
+      <div class="filtros">
+        <input id="busca" placeholder="Buscar produto pelo nome" style="max-width:340px" aria-label="Buscar produto">
+        <select id="fTipo" aria-label="Filtrar por tipo"><option value="">Todos os tipos</option></select>
+        <select id="fStatus" aria-label="Filtrar por status">
+          <option value="">Todos os status</option><option value="saudavel">Saudável</option><option value="atencao">Atenção</option><option value="critico">Crítico ou inviável</option>
+        </select>
+        <select id="fOrigem" aria-label="Filtrar por origem"><option value="">Nacional e internacional</option><option value="nacional">Nacional</option><option value="internacional">Internacional</option></select>
+        <select id="fAnuncio" aria-label="Filtrar por anúncio"><option value="">Clássico e Premium</option><option value="classico">Clássico</option><option value="premium">Premium</option></select>
+        <span class="hint" id="contagem"></span>
+      </div>
 
       <div class="panel flush">
         <div class="tablewrap"><table>
-          <thead><tr><th>Produto</th><th>Tipo</th><th>Origem</th><th class="n">Custo</th><th class="n">Lucro</th><th class="n">Preço salvo</th><th class="n">Preço atual</th><th class="n">Variação</th><th class="n">Lucro R$</th><th></th></tr></thead>
-          <tbody id="lista"><tr><td colspan="10" class="empty">Carregando…</td></tr></tbody>
+          <thead><tr>
+            <th data-ordem="nome">Produto</th><th data-ordem="tipo">Tipo</th><th data-ordem="origem">Origem</th><th class="n" data-ordem="custo">Custo</th>
+            <th class="n" data-ordem="lucroPct">Lucro</th><th class="n" data-ordem="precoSalvo">Preço salvo</th><th class="n" data-ordem="preco">Preço atual</th>
+            <th class="n" data-ordem="variacao">Variação</th><th class="n" data-ordem="lucro">Lucro R$</th><th class="n" data-ordem="margem">Margem</th><th></th>
+          </tr></thead>
+          <tbody id="lista"><tr><td colspan="11" class="empty">Carregando…</td></tr></tbody>
         </table></div>
       </div>
+      <p class="hint" style="margin:0">Semáforo da margem conforme as metas definidas em <a href="analise.html">Análise</a>. Clique no cabeçalho para ordenar.</p>
     </section>
   </main>
 </div>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Análise · Precifica ML</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/config.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar"></aside>
+  <main>
+    <section class="view">
+      <div>
+        <h1>Análise dos produtos</h1>
+        <p class="lede">Margens, ranking, projeção do mês e simulações sobre os produtos salvos, com o cenário de impostos ativo. Nada aqui altera os produtos.</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" data-aba="geral" aria-selected="true">Visão geral</button>
+        <button type="button" role="tab" data-aba="produto" aria-selected="false">Por produto</button>
+        <button type="button" role="tab" data-aba="cenarios" aria-selected="false">Cenários de impostos</button>
+        <button type="button" role="tab" data-aba="sensibilidade" aria-selected="false">E se…</button>
+      </div>
+
+      <!-- Visão geral -->
+      <div class="stack" data-painel="geral">
+        <div class="kpis" id="kpis"></div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><h2>Distribuição das margens</h2><span class="hint" id="cenarioGeral"></span></div>
+            <div class="hbars" id="distribuicao"></div>
+          </div>
+          <form class="panel" id="formMetas" autocomplete="off">
+            <h2 style="margin-bottom:6px">Metas de margem</h2>
+            <p class="hint" style="margin:0 0 12px">Definem o semáforo: abaixo da mínima = crítico, abaixo do alvo = atenção.</p>
+            <div class="fields">
+              <div class="f"><label for="margemMinima">Margem mínima</label><div class="pct"><input id="margemMinima" inputmode="decimal"><span>%</span></div></div>
+              <div class="f"><label for="margemAlvo">Margem alvo</label><div class="pct"><input id="margemAlvo" inputmode="decimal"><span>%</span></div></div>
+            </div>
+            <div class="row" style="margin-top:12px"><button class="btn sm primary" type="submit">Salvar metas</button></div>
+          </form>
+        </div>
+
+        <div class="grid2">
+          <div class="panel flush">
+            <div class="panel-head" style="padding:16px 16px 0"><h2>Maiores margens</h2></div>
+            <div class="tablewrap"><table>
+              <thead><tr><th>Produto</th><th class="n">Preço</th><th class="n">Lucro</th><th class="n">Margem</th></tr></thead>
+              <tbody id="melhores"></tbody>
+            </table></div>
+          </div>
+          <div class="panel flush">
+            <div class="panel-head" style="padding:16px 16px 0"><h2>Menores margens</h2></div>
+            <div class="tablewrap"><table>
+              <thead><tr><th>Produto</th><th class="n">Preço</th><th class="n">Lucro</th><th class="n">Margem</th></tr></thead>
+              <tbody id="piores"></tbody>
+            </table></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2>Projeção do mês</h2><span class="hint">Usa as vendas por mês informadas em cada produto (campo na Calculadora).</span></div>
+          <div class="kpis" id="projecao"></div>
+        </div>
+
+        <div class="panel flush">
+          <div class="panel-head" style="padding:16px 16px 0"><h2>Curva ABC do lucro</h2><span class="hint">A = 80% do lucro do mês, B = próximos 15%, C = restante.</span></div>
+          <div class="tablewrap"><table>
+            <thead><tr><th>Classe</th><th>Produto</th><th class="n">Vendas/mês</th><th class="n">Lucro/venda</th><th class="n">Lucro/mês</th><th class="n">Participação</th><th class="n">Acumulado</th></tr></thead>
+            <tbody id="abc"></tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- Por produto -->
+      <div class="stack" data-painel="produto" hidden>
+        <div class="row"><select id="produtoSel" style="max-width:420px" aria-label="Produto"></select><a class="btn sm" id="btnEditarProduto" href="#">Editar na Calculadora</a></div>
+        <div id="produtoVazio" class="panel empty" hidden>Nenhum produto salvo ainda.</div>
+        <div class="stack" id="produtoDetalhe">
+          <div class="kpis" id="produtoKpis"></div>
+          <div class="grid2">
+            <div class="panel">
+              <div class="panel-head"><h2>Para onde vai cada venda</h2></div>
+              <div class="bar" id="produtoBarra"></div>
+              <div class="legend" id="produtoLegenda"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>Preços-limite</h2><span class="hint">Até onde dá para baixar o preço</span></div>
+              <div class="kpis" id="precosLimite"></div>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="panel flush">
+              <div class="panel-head" style="padding:16px 16px 0"><h2>Clássico × Premium</h2></div>
+              <div class="tablewrap"><table>
+                <thead><tr><th>Anúncio</th><th class="n">Tarifa</th><th class="n">Preço</th><th class="n">Lucro</th><th class="n">Margem</th></tr></thead>
+                <tbody id="anuncios"></tbody>
+              </table></div>
+            </div>
+            <div class="panel flush">
+              <div class="panel-head" style="padding:16px 16px 0"><h2>Simulador de desconto</h2><span class="hint">Lucro vendendo abaixo do preço sugerido</span></div>
+              <div class="row" style="padding:0 16px 12px">
+                <div class="money" style="max-width:160px"><span>R$</span><input id="precoTeste" inputmode="decimal" placeholder="Outro preço" aria-label="Testar outro preço"></div>
+                <span class="hint" id="precoTesteRes"></span>
+              </div>
+              <div class="tablewrap"><table>
+                <thead><tr><th>Desconto</th><th class="n">Preço</th><th class="n">Lucro</th><th class="n">Margem</th><th class="n">Status</th></tr></thead>
+                <tbody id="descontos"></tbody>
+              </table></div>
+            </div>
+          </div>
+          <div class="panel flush">
+            <div class="panel-head" style="padding:16px 16px 0"><h2>Este produto em cada cenário de impostos</h2><span class="hint">"Lucro sem reajustar" = vendendo pelo preço atual no outro cenário</span></div>
+            <div class="tablewrap"><table>
+              <thead><tr><th>Cenário</th><th class="n">Impostos</th><th class="n">Preço sugerido</th><th class="n">Variação</th><th class="n">Lucro</th><th class="n">Lucro sem reajustar</th></tr></thead>
+              <tbody id="produtoCenarios"></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cenários -->
+      <div class="stack" data-painel="cenarios" hidden>
+        <div class="scen-grid" id="cenariosResumo"></div>
+        <div class="panel flush">
+          <div class="panel-head" style="padding:16px 16px 0"><h2>Preço sugerido por cenário</h2><span class="hint">Cor = semáforo da margem. Variação em relação ao cenário ativo.</span></div>
+          <div class="tablewrap"><table>
+            <thead id="matrizHead"></thead>
+            <tbody id="matriz"></tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- E se... -->
+      <div class="stack" data-painel="sensibilidade" hidden>
+        <form class="panel" id="formSens" autocomplete="off">
+          <div class="panel-head"><h2>E se os custos mudarem?</h2><span class="hint">Use valores negativos para quedas. Mostra o lucro mantendo o preço atual.</span></div>
+          <div class="fields" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+            <div class="f"><label for="sCusto">Compra + frete</label><div class="pct"><input id="sCusto" inputmode="decimal" value="10"><span>%</span></div></div>
+            <div class="f"><label for="sCambio">Câmbio (importados)</label><div class="pct"><input id="sCambio" inputmode="decimal" value="0"><span>%</span></div></div>
+            <div class="f"><label for="sFrete">Frete de envio</label><div class="pct"><input id="sFrete" inputmode="decimal" value="0"><span>%</span></div></div>
+            <div class="f"><label for="sTarifa">Tarifa ML (p.p.)</label><div class="pct"><input id="sTarifa" inputmode="decimal" value="0"><span>pp</span></div></div>
+            <div class="f"><label for="sImpostos">Impostos (p.p.)</label><div class="pct"><input id="sImpostos" inputmode="decimal" value="0"><span>pp</span></div></div>
+          </div>
+          <div class="row" style="margin-top:12px"><button class="btn primary" type="submit">Simular</button></div>
+        </form>
+        <div class="kpis" id="sensKpis"></div>
+        <div class="panel flush">
+          <div class="tablewrap"><table>
+            <thead><tr><th>Produto</th><th class="n">Preço atual</th><th class="n">Lucro hoje</th><th class="n">Lucro depois</th><th class="n">Margem depois</th><th class="n">Status</th><th class="n">Novo preço p/ manter o lucro</th></tr></thead>
+            <tbody id="sensLista"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="../assets/js/pages/analise.js"></script>
+</body>
+</html>

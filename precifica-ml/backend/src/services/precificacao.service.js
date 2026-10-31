@@ -19,10 +19,12 @@ export function normalizarEntrada(dados) {
     freteCompra: numero(dados.freteCompra, 'freteCompra', { min: 0, padrao: 0 }),
     freteEnvio: numero(dados.freteEnvio, 'freteEnvio', { min: 0, padrao: 0 }),
     lucro: fracao(dados.lucro, 'lucro', { padrao: 0.2 }),
+    // Estimativa de vendas por mês: usada só nas análises (projeção e curva ABC)
+    volumeMensal: Math.round(numero(dados.volumeMensal, 'volumeMensal', { min: 0, max: 1e6, padrao: 0 })),
   };
 }
 
-function contexto(dados, tipoId, cenarioId) {
+export function contexto(dados, tipoId, cenarioId) {
   const tipo = dados.tipos.find((t) => t.id === tipoId);
   if (!tipo) throw new AppError('Tipo de produto não encontrado.', 404);
   const cenario = dados.cenarios.find((c) => c.id === (cenarioId || dados.cenarioAtivoId)) || dados.cenarios[0];

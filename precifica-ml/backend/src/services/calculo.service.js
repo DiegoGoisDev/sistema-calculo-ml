@@ -93,6 +93,27 @@ export function calcular({ entrada, tipo, cenario, config }) {
   return { ...base, viavel: true, preco, valores, lucro, margem: lucro / preco, alertas: alertas(preco, entrada) };
 }
 
+/**
+ * Resultado de vender por um preço já definido (promoção, concorrência, preço antigo):
+ * quanto sobra de lucro com os custos e percentuais atuais. Não arredonda o preço.
+ */
+export function avaliarPreco({ entrada, tipo, cenario, config }, preco) {
+  const tarifa = entrada.anuncio === 'premium' ? tipo.tarifaPremium : tipo.tarifaClassico;
+  const impostos = impostoEfetivo(tipo, cenario);
+  const outros = (config.mercadoAds || 0) + (config.devolucoes || 0);
+  const custoTotal = custoProduto(entrada, tipo).comImportacao + (tipo.embalagem || 0) + (entrada.freteEnvio || 0);
+  const custoFixo = custoFixoML(preco, entrada.logistica);
+  const lucro = arred(preco * (1 - tarifa - impostos - outros) - custoFixo - custoTotal);
+  return { preco: arred(preco), lucro, margem: preco > 0 ? lucro / preco : NaN, custoFixo };
+}
+
+/** Semáforo da margem: 'critico' (inviável ou abaixo da mínima), 'atencao' (abaixo do alvo) ou 'saudavel'. */
+export function statusMargem(margem, { margemMinima, margemAlvo }) {
+  if (!Number.isFinite(margem) || margem < margemMinima - 1e-9) return 'critico';
+  if (margem < margemAlvo - 1e-9) return 'atencao';
+  return 'saudavel';
+}
+
 function alertas(preco, entrada) {
   const lista = [];
   if (preco >= 70 && preco < LIMITE_FRETE_GRATIS) {

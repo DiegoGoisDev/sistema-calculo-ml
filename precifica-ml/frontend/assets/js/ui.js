@@ -61,6 +61,7 @@ export function confirmarClique(btn, acao, textoConfirmar = 'Confirmar?') {
 const ICONES = {
   calculadora: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/>',
   produtos: '<path d="M4 7h16M4 12h16M4 17h10"/>',
+  analise: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
   tipos: '<path d="M3 6l9-3 9 3-9 3-9-3z"/><path d="M3 12l9 3 9-3M3 18l9 3 9-3"/>',
   impostos: '<path d="M5 19L19 5"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/>',
 };
@@ -73,6 +74,7 @@ export const urlPagina = (caminho) => new URL(caminho, RAIZ).href;
 const PAGINAS = [
   ['calculadora', 'index.html', 'Calculadora'],
   ['produtos', 'pages/produtos.html', 'Meus produtos'],
+  ['analise', 'pages/analise.html', 'Análise'],
   ['tipos', 'pages/tipos.html', 'Tipos de produto'],
   ['impostos', 'pages/impostos.html', 'Impostos'],
 ];
@@ -106,6 +108,20 @@ export async function atualizarCenarioLateral() {
     estado.querySelector('span').textContent = 'API desconectada';
     toast(e.message, true);
   }
+}
+
+const STATUS = {
+  saudavel: ['ok', 'Saudável'],
+  atencao: ['warn', 'Atenção'],
+  critico: ['up', 'Crítico'],
+};
+
+/** Selo do semáforo de margem (saudavel | atencao | critico). Compacto = só a bolinha, com o nome no title. */
+export function seloStatus(status, compacto = false) {
+  const [cls, nome] = STATUS[status] || STATUS.critico;
+  return compacto
+    ? `<span class="badge ${cls}" title="${nome}"><i class="dot" style="margin:0"></i></span>`
+    : `<span class="badge ${cls}"><i class="dot"></i>${nome}</span>`;
 }
 
 export function setSeg(container, valor) {

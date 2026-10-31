@@ -96,7 +96,7 @@ export async function importar({ tipos, config }) {
       }
     });
 
-    draft.config = config;
+    draft.config = { ...draft.config, ...config };
     historico.registrar(
       draft,
       `Base importada da planilha: ${resumo.atualizados.length} tipo(s) atualizado(s), ${resumo.criados.length} criado(s)`

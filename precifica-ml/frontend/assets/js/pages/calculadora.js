@@ -24,6 +24,7 @@ function entrada() {
     freteCompra: num($('#freteCompra').value),
     freteEnvio: num($('#freteEnvio').value),
     lucro: estado.lucro,
+    volumeMensal: Math.round(num($('#volumeMensal').value)),
   };
 }
 
@@ -105,6 +106,7 @@ async function carregar() {
       $('#valorCompra').value = fmt.input(p.valorCompra);
       $('#freteCompra').value = fmt.input(p.freteCompra);
       $('#freteEnvio').value = p.freteEnvio ? fmt.input(p.freteEnvio) : '';
+      $('#volumeMensal').value = p.volumeMensal ? String(p.volumeMensal) : '';
       Object.assign(estado, { origem: p.origem, anuncio: p.anuncio, logistica: p.logistica, lucro: p.lucro });
       $('#lucro').value = fmt.input(p.lucro * 100, 1);
       $('#btnSalvar').textContent = 'Salvar alterações';

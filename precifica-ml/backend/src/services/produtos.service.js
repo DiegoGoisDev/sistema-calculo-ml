@@ -3,11 +3,13 @@ import db from '../config/database.js';
 import AppError from '../utils/AppError.js';
 import * as historico from './historico.service.js';
 import { normalizarEntrada, calcularProduto } from './precificacao.service.js';
+import { metasDe } from './config.service.js';
+import { statusMargem } from './calculo.service.js';
 
 /** Junta o produto salvo com o preço recalculado pelo cenário ativo. */
-function comPrecoAtual(produto, dados) {
+export function comPrecoAtual(produto, dados) {
   const tipo = dados.tipos.find((t) => t.id === produto.tipoId);
-  if (!tipo) return { ...produto, tipo: null, atual: null };
+  if (!tipo) return { ...produto, tipo: null, atual: null, status: 'critico' };
   const r = calcularProduto(produto, { dados });
   return {
     ...produto,
@@ -15,6 +17,7 @@ function comPrecoAtual(produto, dados) {
     atual: r.viavel
       ? { preco: r.preco, lucro: r.lucro, margem: r.margem, custo: r.custo.total, variacao: Math.round((r.preco - produto.precoSalvo) * 100) / 100 }
       : { viavel: false, motivo: r.motivo },
+    status: statusMargem(r.viavel ? r.margem : NaN, metasDe(dados.config)),
   };
 }
 
@@ -101,7 +104,8 @@ export async function remover(id) {
 }
 
 export async function exportarCsv() {
-  const linhas = [['Produto', 'Tipo', 'Origem', 'Anúncio', 'Logística', 'Valor de compra', 'Frete compra', 'Frete envio', 'Lucro %', 'Custo total', 'Preço salvo', 'Preço atual', 'Lucro R$']];
+  const STATUS = { saudavel: 'Saudável', atencao: 'Atenção', critico: 'Crítico' };
+  const linhas = [['Produto', 'Tipo', 'Origem', 'Anúncio', 'Logística', 'Valor de compra', 'Frete compra', 'Frete envio', 'Lucro %', 'Custo total', 'Preço salvo', 'Preço atual', 'Lucro R$', 'Margem %', 'Status', 'Vendas/mês']];
   const produtos = await listar();
   produtos.forEach((p) => {
     const a = p.atual && p.atual.preco !== undefined ? p.atual : null;
@@ -110,6 +114,7 @@ export async function exportarCsv() {
       p.anuncio === 'premium' ? 'Premium' : 'Clássico', p.logistica === 'flex' ? 'Flex/próprio' : 'Mercado Envios',
       p.valorCompra, p.freteCompra, p.freteEnvio, +(p.lucro * 100).toFixed(1),
       a ? a.custo : '', p.precoSalvo, a ? a.preco : '', a ? a.lucro : '',
+      a ? +(a.margem * 100).toFixed(1) : '', STATUS[p.status] || '', p.volumeMensal || 0,
     ]);
   });
   const celula = (v) => {

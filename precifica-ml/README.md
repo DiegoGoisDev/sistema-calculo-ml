@@ -26,7 +26,8 @@ precifica-ml/
 └── frontend/                páginas em HTML, CSS e JavaScript puro
     ├── index.html           Calculadora (página inicial)
     ├── pages/
-    │   ├── produtos.html    Meus produtos
+    │   ├── produtos.html    Meus produtos (filtros, ordenação e semáforo de margem)
+    │   ├── analise.html     Análise: painel, por produto, cenários e "E se…"
     │   ├── tipos.html       Tipos de produto (base de tarifas e impostos)
     │   └── impostos.html    Cenários de impostos e reforma tributária
     └── assets/
@@ -53,6 +54,8 @@ npm start
 Abra http://localhost:3000. A API também entrega o frontend.
 
 Para desenvolver com recarga automática: `npm run dev` (também em `backend/src`).
+
+Testes das regras de cálculo e análise: `npm test` (também em `backend/src`, usa o test runner nativo do Node).
 
 ### Importar a planilha
 
@@ -91,7 +94,23 @@ Percentuais são enviados e recebidos como fração: `0.15` = 15%.
 | POST | `/api/cenarios/:id/ativar` | Ativa e recalcula os preços |
 | POST | `/api/cenarios/:id/duplicar` | Cria uma cópia |
 | GET, PUT | `/api/config` | Mercado Ads, devoluções e opções de lucro |
+| PUT | `/api/config/metas` | Margem mínima e alvo (semáforo dos produtos) |
 | GET | `/api/historico` | Registro de alterações |
+| GET | `/api/analise/resumo` | Painel: totais, semáforo, distribuição de margens, ranking, projeção do mês e curva ABC |
+| GET | `/api/analise/produtos/:id` | Composição, Clássico × Premium, preços-limite, descontos e cenários de um produto (`?preco=` testa outro preço) |
+| GET | `/api/analise/cenarios` | Preço e lucro de cada produto em cada cenário de impostos |
+| POST | `/api/analise/sensibilidade` | "E se…": `custo`, `cambio`, `frete` (variação, `0.1` = +10%), `tarifa`, `impostos` (pontos percentuais, `0.01` = +1 p.p.) |
+
+## Análise dos produtos
+
+A página **Análise** só lê os produtos salvos; nada é gravado, exceto as metas de margem.
+
+- **Visão geral**: margem média, lucro médio, semáforo (saudável / atenção / crítico), distribuição das margens, maiores e menores margens, projeção do mês e curva ABC do lucro.
+- **Por produto**: para onde vai cada venda, preço de equilíbrio e preços para as margens mínima e alvo, Clássico × Premium, simulador de desconto (ou de um preço qualquer) e o produto em cada cenário de impostos.
+- **Cenários de impostos**: preço sugerido de todos os produtos em cada cenário e quantos ficam no prejuízo se o preço não for reajustado.
+- **E se…**: aplica alta de custo, câmbio, frete, tarifa ou impostos e mostra o lucro mantendo o preço atual e o novo preço para manter o lucro.
+
+A projeção e a curva ABC usam o campo opcional **Vendas por mês** da Calculadora. Produtos salvos antes desta versão ficam com 0 até serem editados.
 
 Exemplo de simulação:
 
